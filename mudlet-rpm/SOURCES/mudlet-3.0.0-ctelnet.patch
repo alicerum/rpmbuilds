@@ -1,0 +1,10 @@
+--- src/ctelnet.h	2016-05-17 22:14:04.666338579 +0200
++++ src/ctelnet.h	2016-05-17 22:13:24.199519342 +0200
+@@ -30,6 +30,7 @@
+ #include <QTime>
+ #include "post_guard.h"
+ #include <QStringList>
++#include <QDataStream>
+ 
+ #include <zlib.h>
+ 

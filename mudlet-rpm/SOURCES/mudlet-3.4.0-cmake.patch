@@ -1,0 +1,21 @@
+--- CMakeLists.txt	2017-07-02 08:23:54.000000000 +0200
++++ CMakeLists.txt	2017-07-06 18:40:09.739592838 +0200
+@@ -43,6 +43,7 @@
+ ELSEIF(APPLE)
+   SET(APP_TARGET Mudlet)
+ ELSE()
++  INCLUDE_DIRECTORIES("/usr/include/lua-5.1")
+   SET(APP_TARGET mudlet)
+ ENDIF()
+ 
+@@ -77,3 +78,10 @@
+ ADD_SUBDIRECTORY(3rdparty/edbee-lib/edbee-lib)
+ 
+ ADD_SUBDIRECTORY(src)
++
++INSTALL(FILES src/mudlet DESTINATION bin
++    PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
++                GROUP_READ             GROUP_EXECUTE
++                WORLD_READ             WORLD_EXECUTE)
++INSTALL(DIRECTORY src/mudlet-lua DESTINATION share/mudlet
++    FILES_MATCHING PATTERN "*.lua")
