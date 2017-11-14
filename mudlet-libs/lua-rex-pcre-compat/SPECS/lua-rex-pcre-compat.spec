@@ -1,6 +1,6 @@
 Name:     lua-rex-pcre-compat
-Version:  2.8.0
-Release:  2%{?dist}
+Version:  2.9.0
+Release:  1%{?dist}
 Summary:  Lrexlib with pcre bindings for lua-5.1
 License:  GPLv3+
 
