@@ -1,5 +1,5 @@
 Name:		ags
-Version:	3.4.1.7
+Version:	3.4.1.9
 Release:	1%{?dist}
 Summary:	Visual adventure game engine
 
@@ -26,6 +26,9 @@ make --directory=Engine %{?_smp_mflags}
 %{_bindir}/*
 
 %changelog
-* Thu Oct 26 2017 wyvie <irum@redhat.com>
+* Tue Nov 14 2017 wyvie <irum@redhat.com> - 3.4.1.9-1
+- New upstream version - 3.4.1.9
+
+* Thu Oct 26 2017 wyvie <irum@redhat.com> - 3.4.1.7-1
 - Initial version of package
 
