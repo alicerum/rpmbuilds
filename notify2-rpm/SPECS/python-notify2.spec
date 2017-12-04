@@ -2,7 +2,7 @@
 %global pypi_name notify2
 
 Name:           python-%{pypi_name}
-Version:        0.3
+Version:        0.3.1
 Release:        1%{?dist}
 Summary:        Python interface to DBus notifications
 

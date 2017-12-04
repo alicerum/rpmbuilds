@@ -1,5 +1,5 @@
 Name:           mudlet
-Version:        3.5.0
+Version:        3.6.0
 Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
@@ -10,7 +10,7 @@ Source0:	https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
 Patch0:         mudlet-%{version}-cmake.patch
 Patch1:         mudlet-3.0.0-ctelnet.patch
 Patch2:         mudlet-%{version}-lua-path.patch
-Patch3:         mudlet-3.0.0-lua-global.patch
+Patch3:         mudlet-%{version}-lua-global.patch
 Patch4:         mudlet-3.0.0-hunspell.patch
 
 BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
@@ -46,6 +46,9 @@ cp mudlet.desktop %{buildroot}/usr/share/applications/
 /usr/share/applications/*
 
 %changelog
+* Sun Dec 03 2017 wyvie <irum@redhat.com> - 3.6.0-1
+- 3.6.0 is released
+
 * Wed Oct 18 2017 wyvie <irum@redhat.com> - 3.5.0-1
 - 3.5.0 is released
 
