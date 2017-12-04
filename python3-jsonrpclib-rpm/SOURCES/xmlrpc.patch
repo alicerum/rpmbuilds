@@ -1,0 +1,17 @@
+--- jsonrpclib/jsonrpc.py	2015-12-07 07:57:40.000000000 +0100
++++ jsonrpclib/jsonrpc.py	2017-11-09 16:02:29.386751498 +0100
+@@ -47,10 +47,10 @@
+ """
+ 
+ import types
+-from xmlrpclib import Transport as XMLTransport
+-from xmlrpclib import SafeTransport as XMLSafeTransport
+-from xmlrpclib import ServerProxy as XMLServerProxy
+-from xmlrpclib import _Method as XML_Method
++from xmlrpc.client import Transport as XMLTransport
++from xmlrpc.client import SafeTransport as XMLSafeTransport
++from xmlrpc.client import ServerProxy as XMLServerProxy
++from xmlrpc.client import _Method as XML_Method
+ import string
+ import random
+ 

@@ -1,0 +1,11 @@
+--- src/TLuaInterpreter.cpp	2017-07-02 08:23:54.000000000 +0200
++++ src/TLuaInterpreter.cpp	2017-07-06 18:45:55.823446678 +0200
+@@ -12091,7 +12091,7 @@
+ #else
+     // Additional "../src/" allows location of lua code when object code is in a
+     // directory alongside src directory as occurs using Qt Creator "Shadow Builds"
+-    QString path = "../src/mudlet-lua/lua/LuaGlobal.lua";
++    QString path = "/usr/share/mudlet/mudlet-lua/lua/LuaGlobal.lua";
+ #endif
+ 
+     int error = luaL_dofile(pGlobalLua, path.toLatin1().data());

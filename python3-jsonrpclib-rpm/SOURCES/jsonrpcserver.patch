@@ -1,0 +1,24 @@
+--- jsonrpclib/SimpleJSONRPCServer.py	2015-12-07 07:57:40.000000000 +0100
++++ jsonrpclib/SimpleJSONRPCServer.py	2017-11-09 16:10:09.426765145 +0100
+@@ -59,7 +59,7 @@
+         response = None
+         try:
+             request = jsonrpclib.loads(data)
+-        except Exception, e:
++        except Exception as e:
+             fault = Fault(-32700, 'Request %s invalid. (%s)' % (data, e))
+             response = fault.response()
+             return response
+@@ -226,9 +226,9 @@
+ 
+     def handle_jsonrpc(self, request_text):
+         response = self._marshaled_dispatch(request_text)
+-        print 'Content-Type: application/json-rpc'
+-        print 'Content-Length: %d' % len(response)
+-        print
++        print('Content-Type: application/json-rpc')
++        print('Content-Length: %d' % len(response))
++        print()
+         sys.stdout.write(response)
+ 
+     handle_xmlrpc = handle_jsonrpc

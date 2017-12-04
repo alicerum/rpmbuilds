@@ -1,0 +1,11 @@
+--- src/mudlet-lua/lua/LuaGlobal.lua	2017-03-16 04:36:55.000000000 +0000
++++ src/mudlet-lua/lua/LuaGlobal.lua	2017-03-16 15:57:10.615688191 +0000
+@@ -128,7 +128,7 @@
+ -- TODO: extend to support common Lua code being placed in system shared directory
+ -- tree as ought to happen for *nix install builds.
+ local prefixes = {"../src/mudlet-lua/lua/", "../Resources/mudlet-lua/lua/",
+-    "mudlet.app/Contents/Resources/mudlet-lua/lua/", "mudlet-lua/lua"}
++    "mudlet.app/Contents/Resources/mudlet-lua/lua/", "/usr/share/mudlet/mudlet-lua/lua/", "mudlet-lua/lua"}
+ 
+ -- add default search paths coming from the C++ side as well
+ if getMudletLuaDefaultPaths then

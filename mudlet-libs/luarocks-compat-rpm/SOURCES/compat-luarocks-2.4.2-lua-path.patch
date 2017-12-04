@@ -1,0 +1,8 @@
+--- src/bin/luarocks	2017-03-14 15:18:59.867331069 +0000
++++ src/bin/luarocks	2017-03-14 15:18:59.867331069 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env lua
++#!/usr/bin/env lua-5.1
+ 
+ -- this should be loaded first.
+ local cfg = require("luarocks.cfg")
