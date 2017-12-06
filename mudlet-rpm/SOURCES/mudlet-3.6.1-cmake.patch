@@ -1,0 +1,22 @@
+--- CMakeLists.txt	2017-12-03 20:14:09.000000000 +0100
++++ CMakeLists.txt	2017-12-03 23:08:06.679229002 +0100
+@@ -43,6 +43,7 @@
+ ELSEIF(APPLE)
+   SET(APP_TARGET Mudlet)
+ ELSE()
++  INCLUDE_DIRECTORIES("/usr/include/lua-5.1")
+   SET(APP_TARGET mudlet)
+ ENDIF()
+ 
+@@ -167,3 +168,11 @@
+ ADD_SUBDIRECTORY(src)
+ ADD_SUBDIRECTORY(3rdparty/communi)
+ ADD_SUBDIRECTORY(3rdparty/lua_yajl)
++
++INSTALL(FILES src/mudlet DESTINATION bin
++  PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
++              GROUP_READ             GROUP_EXECUTE
++              WORLD_READ             WORLD_EXECUTE)
++INSTALL(DIRECTORY src/mudlet-lua DESTINATION share/mudlet
++  FILES_MATCHING PATTERN "*.lua")
++
