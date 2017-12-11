@@ -1,6 +1,6 @@
 Name:           mudlet
 Version:        3.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
@@ -46,6 +46,9 @@ cp mudlet.desktop %{buildroot}/usr/share/applications/
 /usr/share/applications/*
 
 %changelog
+* Wed Dec 06 2017 wyvie <irum@redhat.com> - 3.6.1-2
+- Hunspell 1.6.0 in rawhide
+
 * Wed Dec 06 2017 wyvie <irum@redhat.com> - 3.6.1-1
 - 3.6.1 is released
 
