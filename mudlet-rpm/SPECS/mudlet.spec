@@ -1,5 +1,5 @@
 Name:           mudlet
-Version:        3.7.0
+Version:        3.7.1
 Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
@@ -46,6 +46,9 @@ cp mudlet.desktop %{buildroot}/usr/share/applications/
 /usr/share/applications/*
 
 %changelog
+* Tue Dec 26 2017 wyvie <irum@redhat.com> - 3.7.1-1
+- 3.7.1 release
+
 * Sat Dec 23 2017 wyvie <irum@redhat.com> - 3.7.0-1
 - 3.7.0 release
 
