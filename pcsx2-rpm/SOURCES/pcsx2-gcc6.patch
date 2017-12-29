@@ -1,0 +1,12 @@
+diff --git a/common/src/x86emitter/cpudetect.cpp b/common/src/x86emitter/cpudetect.cpp
+index 2854f6d..87e3b2b 100644
+--- a/common/src/x86emitter/cpudetect.cpp
++++ b/common/src/x86emitter/cpudetect.cpp
+@@ -17,6 +17,7 @@
+ #include "cpudetect_internal.h"
+ #include "internal.h"
+ #include "x86_intrin.h"
++#include "fxsrintrin.h"
+ 
+ using namespace x86Emitter;
+ 
