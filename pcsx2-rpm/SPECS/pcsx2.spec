@@ -10,7 +10,6 @@ URL: https://github.com/PCSX2/pcsx2
 Source0: https://github.com/PCSX2/pcsx2/archive/%{commit}.zip
 Patch1:  pcsx2-gcc6.patch
 Patch2:  remove-wx-sdl-validation.patch
-Patch3:  disable-cdvdgigaherz.patch
 # PCSX2 does not support running as a 64 bit application.
 # http://code.google.com/p/pcsx2/wiki/ChrootAnd64bStatusLinux
 ExclusiveArch: i686
@@ -50,6 +49,7 @@ BuildRequires: perl-version
 %else
 BuildRequires: perl-interpreter
 %endif
+BuildRequires: systemd-devel
 
 Requires: joystick
 Requires: hicolor-icon-theme
@@ -64,7 +64,6 @@ this emulator anyway.
 %setup -q -n pcsx2-%{commit}
 %patch1 -p1 -b .gcc6
 %patch2 -p1 -b .wxdl-validation
-%patch3 -p1 -b .cdvdgigaherz
 
 # To remove executable bits from man, doc and icon files
 chmod -x pcsx2/Docs/GPL.txt pcsx2/Docs/License.txt pcsx2/Docs/readme-Docs.txt pcsx2/Docs/PCSX2_FAQ.doc pcsx2/Docs/PCSX2_Readme.doc bin/docs/PCSX2.1 linux_various/PCSX2.xpm
