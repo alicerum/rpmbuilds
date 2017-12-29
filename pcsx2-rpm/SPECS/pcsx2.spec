@@ -3,7 +3,7 @@
 
 Name: pcsx2
 Version: 1.5
-Release: 0.git.%{short_commit}%{?dist}
+Release: 0.rc0.git.%{short_commit}%{?dist}
 Summary: A Sony Playstation2 emulator
 License: GPLv3
 URL: https://github.com/PCSX2/pcsx2
