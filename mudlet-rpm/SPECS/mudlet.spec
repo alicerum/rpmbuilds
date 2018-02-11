@@ -1,6 +1,6 @@
 Name:           mudlet
 Version:        3.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
@@ -46,6 +46,9 @@ cp mudlet.desktop %{buildroot}/usr/share/applications/
 /usr/share/applications/*
 
 %changelog
+* Wed Jan 31 2018 wyvie <irum@redhat.com> - 3.7.1-2
+- dependencies rebuild
+
 * Tue Dec 26 2017 wyvie <irum@redhat.com> - 3.7.1-1
 - 3.7.1 release
 
