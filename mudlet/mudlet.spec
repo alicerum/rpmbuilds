@@ -8,10 +8,8 @@ Group:          Amusements/Games
 URL:            http://www.mudlet.org/
 Source0:	https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
 Patch0:         mudlet-%{version}-cmake.patch
-Patch1:         mudlet-3.0.0-ctelnet.patch
 Patch2:         mudlet-%{version}-lua-path.patch
 Patch3:         mudlet-%{version}-lua-global.patch
-Patch4:         mudlet-3.0.0-hunspell.patch
 
 BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
 BuildRequires:  qt5-qtbase-devel,qt5-qtmultimedia-devel,qt5-qttools-static,boost-devel
@@ -40,10 +38,10 @@ mkdir -pv %{buildroot}/usr/share/applications/
 cp mudlet.desktop %{buildroot}/usr/share/applications/
 
 %files
-/usr/bin/*
-/usr/share/mudlet
-/usr/share/pixmaps/*
-/usr/share/applications/*
+%{_bindir}/*
+%{_datadir}/mudlet
+%{_datadir}/pixmaps/*
+%{_datadir}/applications/*
 
 %changelog
 * Wed Feb 14 2018 wyvie <irum@redhat.com> - 3.7.1-3

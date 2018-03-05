@@ -8,6 +8,8 @@
 **/*.tar.bz2
 **/*.tar.xz
 
+**/results_*/*
+
 !**/SOURCES/*.sh
 !**/SOURCES/*.conf
 !**/SOURCES/*.patch
