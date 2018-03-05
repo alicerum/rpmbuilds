@@ -1,15 +1,15 @@
 Name:           mudlet
 Version:        3.7.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
 Group:          Amusements/Games
 URL:            http://www.mudlet.org/
 Source0:	https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
-Patch0:         mudlet-%{version}-cmake.patch
-Patch2:         mudlet-%{version}-lua-path.patch
-Patch3:         mudlet-%{version}-lua-global.patch
+Patch0:         mudlet-cmake.patch
+Patch1:         mudlet-lua-path.patch
+Patch2:         mudlet-lua-global.patch
 
 BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
 BuildRequires:  qt5-qtbase-devel,qt5-qtmultimedia-devel,qt5-qttools-static,boost-devel
@@ -23,8 +23,8 @@ It’s a new breed of a client on the MUD scene – with an intuitive user inter
 %prep
 %setup -c mudlet-%{version}
 %patch0 -p1
+%patch1
 %patch2
-%patch3
 
 %build
 %cmake .
@@ -32,18 +32,24 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-mkdir -pv %{buildroot}/usr/share/pixmaps/
-cp src/icons/mudlet.png %{buildroot}/usr/share/pixmaps/
-mkdir -pv %{buildroot}/usr/share/applications/
-cp mudlet.desktop %{buildroot}/usr/share/applications/
+install -d %{buildroot}%{_datadir}/pixmaps/
+install -d %{buildroot}%{_datadir}/applications/
+install -m 0644 -p src/icons/%{name}.png %{buildroot}%{_datadir}/pixmaps/
+install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 
 %files
+%doc COMPILE README.md
+%license COPYING
 %{_bindir}/*
 %{_datadir}/mudlet
-%{_datadir}/pixmaps/*
-%{_datadir}/applications/*
+%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Mon Mar 05 2018 wyvie <irum@redhat.com> - 3.7.1-4
+- fix rpm structure
+- added lincense and docs
+
 * Wed Feb 14 2018 wyvie <irum@redhat.com> - 3.7.1-3
 - fix version of mudlet
 
