@@ -1,0 +1,15 @@
+diff --git a/cmake/common/utils.cmake b/cmake/common/utils.cmake
+index a2cb3d9..6789ce0 100644
+--- a/cmake/common/utils.cmake
++++ b/cmake/common/utils.cmake
+@@ -69,6 +69,10 @@ function(make_executable target_name)
+     ${BIN_TARGET_DEPENDS}
+     ${BIN_RAW_DEPENDS})
+ 
++  target_link_libraries(${target_name} xcb-ewmh)
++
++  target_link_libraries(${target_name} xcb-icccm)
++
+   # install targets
+   install(TARGETS ${target_name}
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

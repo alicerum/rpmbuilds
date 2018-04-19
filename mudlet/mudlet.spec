@@ -1,12 +1,12 @@
 Name:           mudlet
-Version:        3.7.1
-Release:        4%{?dist}
+Version:        3.8.0
+Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
 Group:          Amusements/Games
 URL:            http://www.mudlet.org/
-Source0:	https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
+Source0:        https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
 Patch0:         mudlet-cmake.patch
 Patch1:         mudlet-lua-path.patch
 Patch2:         mudlet-lua-global.patch
@@ -21,10 +21,10 @@ Mudlet is a quality MUD client, designed to take mudding to a new level.
 It’s a new breed of a client on the MUD scene – with an intuitive user interface, a specially designed scripting framework, and a very fast text display. Add to that cross-platform capability, an open-source development model, and you have a very likable MUD client.
 
 %prep
-%setup -c mudlet-%{version}
+%setup -cq mudlet-%{version}
 %patch0 -p1
-%patch1
-%patch2
+%patch1 -p1
+%patch2 -p1
 
 %build
 %cmake .
@@ -46,6 +46,9 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun Apr 8 2018 wyvie <irum@redhat.com> - 3.8.0-1
+- 3.8.0 release
+
 * Mon Mar 05 2018 wyvie <irum@redhat.com> - 3.7.1-4
 - fix rpm structure
 - added lincense and docs
