@@ -1,6 +1,6 @@
 Name:           mudlet
-Version:        3.8.0
-Release:        1%{?dist}
+Version:        3.9.0
+Release:        3%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
@@ -14,6 +14,13 @@ Patch2:         mudlet-lua-global.patch
 BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
 BuildRequires:  qt5-qtbase-devel,qt5-qtmultimedia-devel,qt5-qttools-static,boost-devel
 BuildRequires:  mesa-libGLU-devel
+
+Requires:       lua-code-formatter-compat
+Requires:       lua-rex-pcre-compat
+Requires:       lua-sqlite3-compat
+Requires:       lua-utf8-compat
+Requires:       lua-zip-compat
+Requires:       lua-filesystem-compat
 
 %description
 Mudlet is a quality MUD client, designed to take mudding to a new level.
@@ -46,6 +53,12 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Thu May 10 2018 wyvie <wyvie@wyvie.org> - 3.9.0-2
+- Moved lua dependencies to same repo and strong deps
+
+* Wed May 9 2018 wyvie <irum@redhat.com> - 3.9.0-1
+- 3.9.0 release
+
 * Sun Apr 8 2018 wyvie <irum@redhat.com> - 3.8.0-1
 - 3.8.0 release
 

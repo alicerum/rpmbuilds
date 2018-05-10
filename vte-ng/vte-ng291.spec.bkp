@@ -9,14 +9,14 @@ License:        LGPLv2+
 URL:            http://www.gnome.org/
 Source0:        https://github.com/thestinger/%{name}/archive/%{version}.tar.gz
 
-# https://bugzilla.gnome.org/show_bug.cgi?id=711059
-# https://bugzilla.redhat.com/show_bug.cgi?id=1103380
-Patch100:       vte291-command-notify-scroll-speed.patch
-
 Provides:       vte291 = 0.52.1
 Obsoletes:      vte291 <= 0.52.1
 Provides:       vte-profile = 0.52.1
 Obsoletes:      vte-profile <= 0.52.1
+
+# https://bugzilla.gnome.org/show_bug.cgi?id=711059
+# https://bugzilla.redhat.com/show_bug.cgi?id=1103380
+Patch100:       vte291-command-notify-scroll-speed.patch
 
 BuildRequires:  gettext
 BuildRequires:  pkgconfig(gnutls)
@@ -82,10 +82,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang vte-%{apiver}
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
 %files -f vte-%{apiver}.lang
 %license COPYING
 %doc NEWS README
@@ -105,6 +101,26 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_sysconfdir}/profile.d/vte.sh
 
 %changelog
+* Mon Apr 09 2018 Kalev Lember <klember@redhat.com> - 0.52.1-1
+- Update to 0.52.1
+
+* Tue Apr 03 2018 Kalev Lember <klember@redhat.com> - 0.52.0-1
+- Update to 0.52.0
+- Remove ldconfig scriptlets
+
+* Wed Mar 28 2018 Debarshi Ray <rishi@fedoraproject.org> - 0.51.90-1
+- Update to 0.51.90
+
+* Wed Mar 28 2018 Debarshi Ray <rishi@fedoraproject.org> - 0.51.3-1
+- Update to 0.51.3
+- Rebase downstream patches
+
+* Thu Feb 08 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 0.50.2-3
+- Switch to %%ldconfig_scriptlets
+
+* Thu Nov 02 2017 Kalev Lember <klember@redhat.com> - 0.50.2-2
+- Rebuild
+
 * Wed Nov 01 2017 Debarshi Ray <rishi@fedoraproject.org> - 0.50.2-1
 - Update to 0.50.2
 
