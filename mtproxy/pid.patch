@@ -1,0 +1,41 @@
+From 0039390339ff5ced2e4aa01b5d567a888e8dc4ed Mon Sep 17 00:00:00 2001
+From: Pavel Yazev <admin@libertypaul.ru>
+Date: Sat, 2 Jun 2018 01:04:29 +0200
+Subject: [PATCH] Fixed uninitialized PID.ip failure
+
+---
+ net/net-tcp-rpc-client.c | 4 +++-
+ net/net-tcp-rpc-server.c | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/net/net-tcp-rpc-client.c b/net/net-tcp-rpc-client.c
+index 385bf45..f2cc96d 100644
+--- a/net/net-tcp-rpc-client.c
++++ b/net/net-tcp-rpc-client.c
+@@ -243,7 +243,9 @@ static int tcp_rpcc_send_handshake_packet (connection_job_t C) /* {{{ */ {
+ 
+   struct tcp_rpc_data *D = TCP_RPC_DATA (C);
+   struct tcp_rpc_handshake_packet P;
+-  assert (PID.ip);
++  if (!PID.pid) {
++    init_client_PID (c->our_ip);
++  }
+   memset (&P, 0, sizeof (P));
+   P.type = RPC_HANDSHAKE;
+   P.flags = tcp_get_default_rpc_flags () & RPCF_USE_CRC32C;
+diff --git a/net/net-tcp-rpc-server.c b/net/net-tcp-rpc-server.c
+index 06c60d3..a1d858b 100644
+--- a/net/net-tcp-rpc-server.c
++++ b/net/net-tcp-rpc-server.c
+@@ -237,7 +237,9 @@ static int tcp_rpcs_process_nonce_packet (connection_job_t C, struct raw_message
+ static int tcp_rpcs_send_handshake_packet (connection_job_t c) {
+   struct tcp_rpc_data *D = TCP_RPC_DATA(c);
+   struct tcp_rpc_handshake_packet P;
+-  assert (PID.pid);
++  if (!PID.ip) {
++    PID.ip = get_my_ipv4 ();
++  }
+   memset (&P, 0, sizeof (P));
+   P.type = RPC_HANDSHAKE;
+   P.flags = D->crypto_flags & RPCF_USE_CRC32C;
+
