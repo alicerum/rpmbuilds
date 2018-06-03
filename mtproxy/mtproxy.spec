@@ -1,15 +1,14 @@
-%global commit 3ee1c47232105208dab2dbe07f78862aa7dea58b
-%global shortcommit 3ee1c4
+%global commit cdd348294d86e74442bb29bd6767e48321259bec
+%global shortcommit cdd3482
 
 Name:		mtproxy
 Version:	0
-Release:	rc1.%{shortcommit}%{?dist}
+Release:	rc2.%{shortcommit}%{?dist}
 Summary:	Mtproto proxy for telegram
 
 License:	GPLv2
 URL:		https://github.com/TelegramMessenger/MTProxy
 Source0:	https://github.com/TelegramMessenger/MTProxy/archive/%{commit}.zip
-Patch0:         pid.patch
 
 BuildRequires:	openssl-devel
 
@@ -18,7 +17,6 @@ This is a proxy for telegram.
 
 %prep
 %setup -q -n MTProxy-%{commit}
-%patch0 -p1
 sed -i 's@CFLAGS =@CFLAGS = %{optflags}@' Makefile
 sed -i 's@LDFLAGS =@LDFLAGS = %{__global_ldflags}@' Makefile
 sed -i 's@-Werror=format-security @@' Makefile
