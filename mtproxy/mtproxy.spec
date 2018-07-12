@@ -1,9 +1,9 @@
-%global commit cdd348294d86e74442bb29bd6767e48321259bec
-%global shortcommit cdd3482
+%global commit 580909cbca12a2f8529dbb387edf8e9bc5bd4e3a
+%global shortcommit 580909c
 
 Name:		mtproxy
 Version:	0
-Release:	rc2.%{shortcommit}%{?dist}
+Release:	rc3.%{shortcommit}%{?dist}
 Summary:	Mtproto proxy for telegram
 
 License:	GPLv2
@@ -37,5 +37,8 @@ cp objs/bin/mtproto-proxy %{buildroot}%{_bindir}
 
 
 %changelog
+* Tue Jun 4 2018 wyvie <wyvie@wyvie.org> - 0-rc3.580909c
+- Fixed PID.ip assertion
+
 * Sat Jun 2 2018 wyvie <wyvie@wyvie.org> - 0-rc0.3ee1c5
 - Initial
