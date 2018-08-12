@@ -2,7 +2,7 @@
 
 Name:		hsetroot
 Version:	1.0.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	imlib2-based wallpaper changer
 
 License:	GPLv2
@@ -11,6 +11,7 @@ Source0:	https://github.com/himdel/hsetroot/archive/%{commit}.zip
 
 BuildRequires:	imlib2-devel
 BuildRequires:  libX11-devel
+BuildRequires:  gcc
 
 %description
 imlib2-based wallpaper changer
@@ -19,7 +20,7 @@ imlib2-based wallpaper changer
 %setup -q -n hsetroot-%{commit}
 
 %build
-make CFLAGS="%{optflags}" LDFLAGS="%{__global_ldflags} -lX11 -lImlib2"
+make CFLAGS="%{optflags}" LDFLAGS="%{__global_ldflags} -lX11 -lImlib2" CC="gcc"
 
 %install
 install -d %{buildroot}%{_bindir}
@@ -30,6 +31,9 @@ install -m 0755 -p hsetroot %{buildroot}%{_bindir}
 %{_bindir}/hsetroot
 
 %changelog
-* Tue Aug 7 2018 wyvie <wyvie@wyvie.org> - 0.1-0.rc0.gita62481
+* Sat Aug 11 2018 wyvie <wyvie@wyvie.org> - 1.0.2-2
+- fixed build for f29
+
+* Tue Aug 7 2018 wyvie <wyvie@wyvie.org> - 1.0.2-1
 - initial build
 
