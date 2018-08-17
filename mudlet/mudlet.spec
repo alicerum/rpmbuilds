@@ -1,5 +1,5 @@
 Name:           mudlet
-Version:        3.11.0
+Version:        3.12.0
 Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
@@ -53,6 +53,9 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Mon Aug 13 2018 wyvie <wyvie@wyvie.org> - 3.12.0-1
+- 3.12.0 release
+
 * Sun Jul 15 2018 wyvie <wyvie@wyvie.org> - 3.11.0-1
 - 3.11.0 release
 

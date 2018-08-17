@@ -1,10 +1,12 @@
 Name:      lua-code-formatter-compat
 Version:   5.1.2
-Release:   1%{?dist}
+Release:   2%{?dist}
 Source0:   https://github.com/martin-eden/lua_code_formatter/archive/5.1-2.tar.gz
 Summary:   Lua code formatter for lua-5.1
 License:   GPLv3+
 BuildArch: noarch
+
+Requires: compat-lua-libs
 
 BuildRequires: unzip
 
@@ -29,5 +31,8 @@ cp -r workshop %{buildroot}%{_datarootdir}/lua/5.1/lcf/
 Lua code formatter built for lua-5.1 (compat-lua in fedora) needed by mudlet.
 
 %changelog
-* Sun Dec 03 2017 Ilya Rum <elijahrum@gmail.com> - 5.1-1
+* Fri Aug 17 2018 wyvie <wyvie@wyvie.org> - 5.1-2
+- Dependency to compat-lua-libs
+
+* Sun Dec 03 2017 wyvie <wyvie@wyvie.org> - 5.1-1
 - Initial version of the package

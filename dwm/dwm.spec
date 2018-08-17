@@ -1,6 +1,7 @@
 Name:		dwm
 Version:	6.1
-Release:	2%{?dist}
+Release:	4%{?dist}
+Epoch:		2
 Summary:	A tiling window manager
 
 License:	MIT
@@ -23,7 +24,7 @@ sed -i 's@dwm-"VERSION@dwm-%{version}"@' dwm.c
 
 %build
 make %{?_smp_mflags} \
-	CFLAGS="%{optflags} -I/usr/include/freetype2" \
+	CFLAGS="%{optflags} -I/usr/include/freetype2 -DXINERAMA" \
 	LDFLAGS="%{__global_ldflags} -lXft -lXinerama -lX11 -lfreetype -lfontconfig" \
 	CC="gcc"
 
@@ -40,6 +41,12 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/xsessions
 %{_datadir}/xsessions/%{name}.desktop
 
 %changelog
+* Tue Aug 14 2018 wyvie <wyvie@wyvie.org> - 6.1-4
+- turn on xinerama
+
+* Mon Aug 13 2018 wyvie <wyvie@wyvie.org> - 6.1-3
+- removed windows restack warping
+
 * Sat Aug 11 2018 wyvie <wyvie@wyvie.org> - 6.1-2
 - changed terminal
 
