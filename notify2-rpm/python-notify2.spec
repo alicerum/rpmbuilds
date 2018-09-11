@@ -3,7 +3,7 @@
 
 Name:           python-%{pypi_name}
 Version:        0.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python interface to DBus notifications
 
 License:        TODO
@@ -24,6 +24,7 @@ notify2.Notification("Summary", "Some body text", "notificationmessageim" Icon
 name ) ...
 
 %package -n     python2-%{pypi_name}
+Requires:	python2-dbus
 Summary:        Python interface to DBus notifications
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
@@ -55,5 +56,8 @@ name ) ...
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %changelog
-* Sat Mar 11 2017 irum@redhat.com - 0.3-1
-- Initial package.
+* Sat Mar 11 2017 wyvie <wyvie@wyvie.org> - 0.3.1-2
+- Added runtime dependency to dbus
+
+* Sat Mar 11 2017 wyvie <wyvie@wyvie.org> - 0.3.1-1
+- Initial package

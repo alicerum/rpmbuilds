@@ -1,7 +1,6 @@
 Name:		dwm
 Version:	6.1
-Release:	4%{?dist}
-Epoch:		2
+Release:	5%{?dist}
 Summary:	A tiling window manager
 
 License:	MIT

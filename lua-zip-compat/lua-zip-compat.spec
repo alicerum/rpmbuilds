@@ -5,7 +5,7 @@ Source0:  https://github.com/mpeterv/luazip/archive/%{version}.tar.gz
 Summary:  Zip bindings for lua-5.1
 License:  GPLv3+
 
-BuildRequires: compat-lua-devel zziplib-devel
+BuildRequires: compat-lua-devel zziplib-devel gcc
 Requires:      compat-lua-libs
 
 %prep

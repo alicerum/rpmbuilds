@@ -20,6 +20,10 @@ in this package it is built from master branch
 
 
 %build
+sed -i 's|INCLUDES = -g -O3 -Wall|INCLUDES =|' src/Makefile.in
+sed -i 's|CFLAGS = @CFLAGS@|CFLAGS = %{optflags} @CFLAGS@|' src/Makefile.in
+sed -i 's|LDFLAGS =|LDFLAGS = %{__global_ldflags}|' src/Makefile.in
+
 %configure
 sed -i 's@docsdir = $(prefix)/doc/scrot@docsdir = $(prefix)/share/doc/scrot@g' Makefile
 make %{?_smp_mflags}

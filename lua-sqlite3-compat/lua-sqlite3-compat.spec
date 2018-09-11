@@ -5,7 +5,7 @@ Source0:  https://github.com/keplerproject/luasql/archive/v%{version}.tar.gz
 Summary:  Sqlite3 bindings for lua-5.1
 License:  GPLv3+
 
-BuildRequires: compat-lua-devel sqlite-devel
+BuildRequires: compat-lua-devel sqlite-devel gcc
 Requires:      compat-lua-libs
 
 %prep

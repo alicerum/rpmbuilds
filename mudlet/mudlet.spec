@@ -1,16 +1,17 @@
 Name:           mudlet
-Version:        3.12.0
+Version:        3.13.0
 Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
 License:        GPLv2+
 Group:          Amusements/Games
 URL:            http://www.mudlet.org/
-Source0:        https://www.mudlet.org/download/Mudlet-%{version}.tar.xz
+Source0:	https://www.mudlet.org/wp-content/files/Mudlet-%{version}.tar.xz
 Patch0:         mudlet-cmake.patch
 Patch1:         mudlet-lua-path.patch
 Patch2:         mudlet-lua-global.patch
 
+BuildRequires:	gcc-c++
 BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
 BuildRequires:  qt5-qtbase-devel,qt5-qtmultimedia-devel,qt5-qttools-static,boost-devel
 BuildRequires:  mesa-libGLU-devel pugixml-devel
@@ -53,6 +54,9 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed Sep 5 2018 wyvie <wyvie@wyvie.org> - 3.13.0-1
+- 3.13.0 release
+
 * Mon Aug 13 2018 wyvie <wyvie@wyvie.org> - 3.12.0-1
 - 3.12.0 release
 

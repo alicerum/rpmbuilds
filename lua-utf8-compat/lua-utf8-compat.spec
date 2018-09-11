@@ -5,7 +5,7 @@ Source0:  https://github.com/starwing/luautf8/archive/%{version}.tar.gz
 Summary:  Utf8 bindings for lua-5.1
 License:  GPLv3+
 
-BuildRequires: compat-lua-devel
+BuildRequires: compat-lua-devel gcc
 Requires:      compat-lua-libs
 
 %prep

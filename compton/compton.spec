@@ -1,14 +1,13 @@
-%global debug_package %{nil}
-
 Name:		compton
 Version:	0.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Compositor for X
 
 License:	GPLv2
 URL:		https://github.com/chjj/compton
 Source0:	https://github.com/chjj/compton/archive/master.zip
 
+BuildRequires:	gcc
 BuildRequires:	libX11-devel libXcomposite-devel libXdamage-devel
 BuildRequires:  libXfixes-devel libXext-devel libXrender-devel
 BuildRequires:  libXrandr-devel libXinerama-devel
@@ -21,6 +20,10 @@ BuildRequires:  dbus-devel asciidoc
 %setup -n compton-master
 
 %build
+sed -i 's@CFLAGS ?= -DNDEBUG -O2 -D_FORTIFY_SOURCE=2@CFLAGS ?= %{optflags}@' Makefile
+sed -i 's@CFLAGS += -Wall@@' Makefile
+sed -i 's@LDFLAGS ?= -Wl,-O1 -Wl,--as-needed@LDFLAGS ?= %{__global_ldflags}@' Makefile
+
 make %{?_smp_mflags}
 
 %install
@@ -34,5 +37,8 @@ make %{?_smp_mflags}
 %{_mandir}/man1/*
 
 %changelog
-* Sun Oct 22 2017 Ilya Rum <elijahrum@gmail.com> - 0.1-1
+* Sun Sep 2 2018 wyvie <wyvie@wyvie.org> - 0.1-2
+- Rebuilt with fedora's gcc flags
+
+* Sun Oct 22 2017 wyvie <wyvie@wyvie.org> - 0.1-1
 - Initial version of the package

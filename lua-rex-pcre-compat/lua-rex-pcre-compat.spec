@@ -5,7 +5,7 @@ Source0:  https://github.com/rrthomas/lrexlib/archive/rel-2-9-0.tar.gz
 Summary:  Lrexlib with pcre bindings for lua-5.1
 License:  GPLv3+
 
-BuildRequires: compat-lua-devel pcre-devel
+BuildRequires: compat-lua-devel pcre-devel gcc
 Requires:      compat-lua-libs
 
 %prep
