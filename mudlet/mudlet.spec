@@ -1,5 +1,5 @@
 Name:           mudlet
-Version:        3.13.0
+Version:        3.17.1
 Release:        1%{?dist}
 Summary:        Crossplatform mud client
 
@@ -10,11 +10,13 @@ Source0:	https://www.mudlet.org/wp-content/files/Mudlet-%{version}.tar.xz
 Patch0:         mudlet-cmake.patch
 Patch1:         mudlet-lua-path.patch
 Patch2:         mudlet-lua-global.patch
+Patch3:         mudlet-hunspell.patch
 
 BuildRequires:	gcc-c++
-BuildRequires:  cmake,compat-lua-devel,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
+BuildRequires:  cmake,libzip-devel,zlib-devel,pcre-devel,yajl-devel,hunspell-devel
 BuildRequires:  qt5-qtbase-devel,qt5-qtmultimedia-devel,qt5-qttools-static,boost-devel
-BuildRequires:  mesa-libGLU-devel pugixml-devel
+BuildRequires:  mesa-libGLU-devel pugixml-devel compat-lua compat-lua-devel
+BuildRequires:  lua-yajl-compat
 
 Requires:       lua-code-formatter-compat
 Requires:       lua-rex-pcre-compat
@@ -22,6 +24,7 @@ Requires:       lua-sqlite3-compat
 Requires:       lua-utf8-compat
 Requires:       lua-zip-compat
 Requires:       lua-filesystem-compat
+Requires:       lua-yajl-compat
 
 %description
 Mudlet is a quality MUD client, designed to take mudding to a new level.
@@ -33,6 +36,10 @@ It’s a new breed of a client on the MUD scene – with an intuitive user inter
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+
+sed -i 's@lua5.1@lua-5.1@' translations/translated/CMakeLists.txt
+sed -i 's@QLibraryInfo::location(QLibraryInfo::TranslationsPath)@QStringLiteral("/usr/share/mudlet/translations/")@' src/mudlet.cpp
 
 %build
 %cmake .
@@ -40,10 +47,15 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+
 install -d %{buildroot}%{_datadir}/pixmaps/
 install -d %{buildroot}%{_datadir}/applications/
+install -d %{buildroot}%{_datadir}/%{name}/translations/
+install -m 0644 -p translations/translated/*.qm %{buildroot}%{_datadir}/%{name}/translations/
 install -m 0644 -p src/icons/%{name}.png %{buildroot}%{_datadir}/pixmaps/
 install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
+
+#%find_lang %{name} --with-qt
 
 %files
 %doc COMPILE README.md
@@ -54,6 +66,28 @@ install -m 0644 -p %{name}.desktop %{buildroot}%{_datadir}/applications/
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Mon Feb 18 2019 wyvie <wyvie@wyvie.org> - 3.17.1-1
+- 3.17.1 release
+
+* Sun Feb 3 2019 wyvie <wyvie@wyvie.org> - 3.17.0-1
+- 3.17.0 release
+- made translations work
+
+* Mon Jan 28 2019 wyvie <wyvie@wyvie.org> - 3.16.1-1
+- 3.16.1 release
+
+* Fri Dec 21 2018 wyvie <wyvie@wyvie.org> - 3.16.0-1
+- 3.16.0 release
+
+* Mon Nov 5 2018 wyvie <wyvie@wyvie.org> - 3.15.0-1
+- 3.15.0 release
+
+* Thu Oct 25 2018 wyvie <wyvie@wyvie.org> - 3.14.1-1
+- fix a crash that sometimes happens after saving a profile with synced modules 
+
+* Thu Oct 11 2018 wyvie <wyvie@wyvie.org> - 3.14.0-1
+- 3.14.0 release
+
 * Wed Sep 5 2018 wyvie <wyvie@wyvie.org> - 3.13.0-1
 - 3.13.0 release
 

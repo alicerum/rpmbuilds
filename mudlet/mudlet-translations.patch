@@ -1,0 +1,13 @@
+diff --git a/mudlet.cpp b/mudlet.cpp
+index 21fa3b0..3a74f7d 100644
+--- a/mudlet.cpp
++++ b/mudlet.cpp
+@@ -3993,7 +3993,7 @@ QString mudlet::getMudletPath(const mudletPathType mode, const QString& extra1,
+         // when saving/resyncing packages/modules - ends in a '/'
+         return QStringLiteral("%1/.config/mudlet/moduleBackups/").arg(QDir::homePath());
+     case qtTranslationsPath:
+-        return QLibraryInfo::location(QLibraryInfo::TranslationsPath);
++        return QLibraryInfo::location("/usr/share/mudlet/translations/");
+     }
+     Q_UNREACHABLE();
+     return QString();

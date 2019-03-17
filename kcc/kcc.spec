@@ -1,0 +1,58 @@
+# Created by pyp2rpm-3.3.2
+%global pypi_name KindleComicConverter
+%global srcname kcc
+
+Name:           %{srcname}
+Version:        5.4.5
+Release:        1%{?dist}
+Summary:        Comic and Manga converter for e-book readers
+
+License:        ISC License (ISCL)
+URL:            http://github.com/ciromattia/kcc
+Source0:        https://files.pythonhosted.org/packages/source/K/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+BuildArch:      noarch
+ 
+BuildRequires:  python3-devel
+BuildRequires:  python3dist(setuptools)
+
+%description
+Comic and Manga converter for e-book readers
+
+%package -n     python3-%{srcname}
+Summary:        %{summary}
+%{?python_provide:%python_provide python3-%{srcname}}
+ 
+Requires:       python3dist(pillow) >= 4.0.0
+Requires:       python3dist(psutil) >= 5.0.0
+Requires:       python3dist(python-slugify) >= 1.2.1
+Requires:       python3dist(raven) >= 6.0.0
+Requires:       python3dist(setuptools)
+Requires:       python3-qt5 >= 5.6.0
+Requires:       p7zip
+
+%description -n python3-%{srcname}
+Comic and Manga converter for e-book readers
+
+
+%prep
+%autosetup -n %{pypi_name}-%{version}
+# Remove bundled egg-info
+rm -rf %{pypi_name}.egg-info
+
+%build
+%py3_build
+
+%install
+%py3_install
+
+%files -n python3-%{srcname}
+%doc README.md
+%{_bindir}/kcc-c2e
+%{_bindir}/kcc-c2p
+%{_bindir}/kcc
+%{python3_sitelib}/kindlecomicconverter
+%{python3_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
+
+%changelog
+* Mon Dec 10 2018 wyvie <wyvie@wyvie.org> - 5.4.5-1
+- Initial package.

@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c322f9b..dbe1beb 100644
+index 3ae56a2..6843054 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -43,6 +43,7 @@ if(WIN32)
+@@ -59,6 +59,7 @@ if(WIN32)
  elseif(APPLE)
    set(APP_TARGET Mudlet)
  else()
@@ -10,10 +10,10 @@ index c322f9b..dbe1beb 100644
    set(APP_TARGET mudlet)
  endif()
  
-@@ -230,3 +231,10 @@ endif(CCACHE_FOUND)
+@@ -273,3 +274,10 @@ endif(CCACHE_FOUND)
  add_subdirectory(src)
  add_subdirectory(3rdparty/communi)
- add_subdirectory(3rdparty/lua_yajl)
+ add_subdirectory(translations/translated)
 +
 +INSTALL(FILES src/mudlet DESTINATION bin
 +  PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
